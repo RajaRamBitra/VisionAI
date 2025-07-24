@@ -141,13 +141,6 @@ This project is open source and available under the [MIT License](LICENSE).
 - NVIDIA, Salesforce, and Facebook/Meta for their open-source computer vision models
 - EasyOCR team for the OCR capabilities
 
-## 📞 Support
-
-If you encounter any issues or have questions, please:
-1. Check the troubleshooting section above
-2. Open an issue on GitHub
-3. Ensure you're using the latest version of all dependencies
-
----
+--
 
 **Happy Vision AI exploration! 🚀👁️**
