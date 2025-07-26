@@ -6,3 +6,4 @@ transformers
 easyocr
 numpy
 Pillow
+timm
