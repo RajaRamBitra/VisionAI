@@ -19,35 +19,50 @@ st.set_page_config(layout="wide", page_title="Vision AI")
 
 # Caching the models for faster loading
 @st.cache_resource
-def load_models():
-    """Load all the required models and processors."""
-    models = {
-        # 1. Captioning Model
-        "caption_proc": BlipProcessor.from_pretrained(
-            "Salesforce/blip-image-captioning-large"
-        ),
-        "caption_model": BlipForConditionalGeneration.from_pretrained(
-            "Salesforce/blip-image-captioning-large"
-        ),
-        # 2. VQA Model
-        "vqa_proc": BlipProcessor.from_pretrained("Salesforce/blip-vqa-base"),
-        "vqa_model": BlipForQuestionAnswering.from_pretrained(
-            "Salesforce/blip-vqa-base"
-        ),
-        # 3. Object Detection Model
-        "obj_proc": DetrImageProcessor.from_pretrained("facebook/detr-resnet-50"),
-        "obj_model": DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50"),
-        # 4. Segmentation Model
-        "seg_proc": SegformerImageProcessor.from_pretrained(
-            "nvidia/segformer-b5-finetuned-ade-640-640"
-        ),
-        "seg_model": SegformerForSemanticSegmentation.from_pretrained(
-            "nvidia/segformer-b5-finetuned-ade-640-640"
-        ),
-        # 5. OCR Reader Model
-        "ocr_reader": easyocr.Reader(["en"]),
-    }
-    return models
+def load_captioning_model():
+    """Load the captioning model and processor."""
+    processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
+    model = BlipForConditionalGeneration.from_pretrained(
+        "Salesforce/blip-image-captioning-large"
+    )
+    return {"caption_proc": processor, "caption_model": model}
+
+
+@st.cache_resource
+def load_vqa_model():
+    """Load the VQA model and processor."""
+    processor = BlipProcessor.from_pretrained("Salesforce/blip-vqa-base")
+    model = BlipForQuestionAnswering.from_pretrained("Salesforce/blip-vqa-base")
+    return {"vqa_proc": processor, "vqa_model": model}
+
+
+@st.cache_resource
+def load_object_detection_model():
+    """Load the object detection model and processor."""
+    processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50")
+    model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50")
+    return {"obj_proc": processor, "obj_model": model}
+
+
+@st.cache_resource
+def load_segmentation_model():
+    """Load the segmentation model and processor."""
+    processor = SegformerImageProcessor.from_pretrained(
+        "nvidia/segformer-b5-finetuned-ade-640-640"
+    )
+    model = SegformerForSemanticSegmentation.from_pretrained(
+        "nvidia/segformer-b5-finetuned-ade-640-640"
+    )
+    return {"seg_proc": processor, "seg_model": model}
+
+
+@st.cache_resource
+def load_ocr_reader():
+    """Load the OCR reader model."""
+    return {"ocr_reader": easyocr.Reader(["en"])}
+
+
+# Models
 
 
 # 1. Captioning Model
@@ -203,8 +218,6 @@ def main():
             st.session_state.last_uploaded_file_id = uploaded_file.file_id
             st.session_state.results = {}  # Clear previous results
 
-    models = load_models()
-
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
 
@@ -228,6 +241,7 @@ def main():
             # Process the selected task
 
             if task == "Image Captioning":
+                models = load_captioning_model()
                 # This block runs automatically only once, then waits for user input
                 if "caption" not in st.session_state.results:
                     caption = perform_captioning(image, "", models)
@@ -248,6 +262,7 @@ def main():
                 )
 
             elif task == "Visual Question Answering":
+                models = load_vqa_model()
                 # Add this informational message to set user expectations
                 st.info(
                     "The AI will attempt to answer any question, but it may be inaccurate if the answer isn't clear from the image."
@@ -276,6 +291,7 @@ def main():
                 )
 
             elif task == "Object Detection":
+                models = load_object_detection_model()
                 if st.sidebar.button("Detect Objects", use_container_width=True):
                     # When button is clicked, run the model and SAVE the result
                     result_image, detection_df = perform_object_detection(
@@ -299,6 +315,7 @@ def main():
                         st.info("No objects detected with high confidence.")
 
             elif task == "Image Segmentation":
+                models = load_segmentation_model()
                 # Automatically perform segmentation the first time this task is viewed for an image
                 if "segmentation" not in st.session_state.results:
                     visual_image, raw_mask = perform_segmentation(image.copy(), models)
@@ -347,7 +364,8 @@ def main():
                 )
 
             elif task == "Optical Character Recognition (OCR)":
-                st.info(
+                models = load_ocr_reader()
+                st.caption(
                     "Note: OCR works best on clear text. Logos or stylized fonts can sometimes be detected incorrectly."
                 )
 
