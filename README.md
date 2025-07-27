@@ -5,6 +5,7 @@ This is an advanced, multi-functional computer vision application built with Pyt
 ## 🚀 Live Demo
 
 **Link:** [https://visionai-studio.streamlit.app/](https://visionai-studio.streamlit.app/)
+
 *(Note: This app runs on Streamlit's free community cloud and loads multiple large AI models. It may occasionally crash due to memory limitations. If this happens, please try rebooting the app using the menu in the bottom-right corner.)*
 
 ## ✨ Features
