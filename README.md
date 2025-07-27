@@ -2,6 +2,11 @@
 
 This is an advanced, multi-functional computer vision application built with Python and Streamlit. It provides a user-friendly web interface to perform a wide array of AI-powered tasks on any uploaded image. The application leverages powerful, pre-trained models from Hugging Face and other open-source libraries to deliver state-of-the-art results without needing to train models from scratch.
 
+## 🚀 Live Demo
+
+**Link:** [https://visionai-studio.streamlit.app/](https://visionai-studio.streamlit.app/)
+*(Note: This app runs on Streamlit's free community cloud and loads multiple large AI models. It may occasionally crash due to memory limitations. If this happens, please try rebooting the app using the menu in the bottom-right corner.)*
+
 ## ✨ Features
 
 This application combines five key computer vision tasks into a single, cohesive interface:
