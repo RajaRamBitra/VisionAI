@@ -2,39 +2,46 @@
 
 This is an advanced, multi-functional computer vision application built with Python and Streamlit. It provides a user-friendly web interface to perform a wide array of AI-powered tasks on any uploaded image. The application leverages powerful, pre-trained models from Hugging Face and other open-source libraries to deliver state-of-the-art results without needing to train models from scratch.
 
-## 🚀 Live Demo
+## Live Demo
 
 **Link:** [https://visionai-studio.streamlit.app/](https://visionai-studio.streamlit.app/)
 
 *(Note: This app runs on Streamlit's free community cloud and loads multiple large AI models. It may occasionally crash due to memory limitations. If this happens, please try rebooting the app using the menu in the bottom-right corner.)*
 
-## ✨ Features
+## Features
 
 This application combines five key computer vision tasks into a single, cohesive interface:
 
-### 📝 Image Captioning
+### Image Captioning
 - Automatically generates a descriptive sentence about the contents of the image
 - Allows for "controllable captioning" by letting the user provide a starting prompt to guide the output
+- [Image Captioning](vision_ai_demo1.png)
 
-### ❓ Visual Question Answering (VQA)
+### Visual Question Answering (VQA)
 - Lets users ask questions about the image in natural language (e.g., "What color is the car?")
 - The AI analyzes the image to provide a text-based answer
+- [Visual Question Answering](vision_ai_demo2.png)
 
-### 🎯 Object Detection
+### Object Detection
 - Identifies and draws bounding boxes around multiple objects in an image
 - Displays a detailed table listing each detected object and its confidence score
+- [Object Detection](vision_ai_demo3.png)
 
-### 🖼️ Image Segmentation & Portrait Mode
+### Image Segmentation & Portrait Mode
 - Performs semantic segmentation to understand the exact shape and boundaries of objects
+- [Image Segmentation](vision_ai_demo4.png)
 - Applies a "Portrait Mode" effect by blurring the background and keeping the main subject (typically a person) in sharp focus
 - Includes the ability to remove the blur effect and revert to the original segmentation mask
+- [Background Blur Effect](vision_ai_demo5.png)
 
-### 📖 Optical Character Recognition (OCR)
+### Optical Character Recognition (OCR)
 - Detects and extracts any text present in the image
 - Includes image pre-processing (grayscale conversion, contrast enhancement) to improve accuracy on difficult text, such as logos
 - Draws bounding boxes around the detected text on the original image
+- [Optical Character Recognition (OCR) - without Text](vision_ai_demo6.png)
+- [Optical Character Recognition (OCR) - with Text](vision_ai_demo7.png)
 
-## 🚀 How to Run the Application
+## How to Run the Application
 
 Follow these steps to get the application running on your local machine.
 
@@ -60,7 +67,7 @@ A new tab should automatically open in your web browser with the Vision AI appli
 
 **Note:** The first time you run the app, it will take several minutes to download the pre-trained AI models. This is a one-time process. Subsequent startups will be much faster as the models will be loaded from the cache.
 
-## 🤖 Models Used
+## Models Used
 
 This application relies on the following pre-trained models:
 
@@ -70,16 +77,17 @@ This application relies on the following pre-trained models:
 - **Image Segmentation:** `nvidia/segformer-b5-finetuned-ade-640-640`
 - **Optical Character Recognition:** `easyocr` library
 
-## 📂 File Structure
+## File Structure
 
 ```
 vision-ai/
 ├── app.py              # Main Python script with application logic and Streamlit UI
 ├── README.md           # Project documentation (this file)
 └── requirements.txt    # Python dependencies (optional)
+└── images/demo_images    # demo images
 ```
 
-## 📋 Requirements
+## Requirements
 
 If you prefer to use a `requirements.txt` file, create one with the following content:
 
@@ -99,7 +107,7 @@ Then install dependencies using:
 pip install -r requirements.txt
 ```
 
-## 🖥️ Usage
+## Usage
 
 1. **Upload an Image:** Click on the file uploader and select an image (supports JPG, PNG, JPEG formats)
 
@@ -116,7 +124,7 @@ pip install -r requirements.txt
    - For Portrait Mode: Toggle blur effects on/off
    - For OCR: View extracted text and bounding boxes
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues:
 
@@ -132,7 +140,7 @@ pip install -r requirements.txt
 pip install --upgrade pip
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
@@ -140,13 +148,4 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgments
-
-- Hugging Face for providing pre-trained models
-- Streamlit for the amazing web app framework
-- NVIDIA, Salesforce, and Facebook/Meta for their open-source computer vision models
-- EasyOCR team for the OCR capabilities
-
 --
-
-**Happy Vision AI exploration! 🚀👁️**
