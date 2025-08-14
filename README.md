@@ -15,31 +15,31 @@ This application combines five key computer vision tasks into a single, cohesive
 ### Image Captioning
 - Automatically generates a descriptive sentence about the contents of the image
 - Allows for "controllable captioning" by letting the user provide a starting prompt to guide the output
-- ![Image Captioning](vision_ai_demo1.png)
+- ![Image Captioning](images/vision_ai_demo1.png)
 
 ### Visual Question Answering (VQA)
 - Lets users ask questions about the image in natural language (e.g., "What color is the car?")
 - The AI analyzes the image to provide a text-based answer
-- ![Visual Question Answering](vision_ai_demo2.png)
+- ![Visual Question Answering](images/vision_ai_demo2.png)
 
 ### Object Detection
 - Identifies and draws bounding boxes around multiple objects in an image
 - Displays a detailed table listing each detected object and its confidence score
-- ![Object Detection](vision_ai_demo3.png)
+- ![Object Detection](images/vision_ai_demo3.png)
 
 ### Image Segmentation & Portrait Mode
 - Performs semantic segmentation to understand the exact shape and boundaries of objects
-- ![Image Segmentation](vision_ai_demo4.png)
+- ![Image Segmentation](images/vision_ai_demo4.png)
 - Applies a "Portrait Mode" effect by blurring the background and keeping the main subject (typically a person) in sharp focus
 - Includes the ability to remove the blur effect and revert to the original segmentation mask
-- ![Background Blur Effect](vision_ai_demo5.png)
+- ![Background Blur Effect](images/vision_ai_demo5.png)
 
 ### Optical Character Recognition (OCR)
 - Detects and extracts any text present in the image
 - Includes image pre-processing (grayscale conversion, contrast enhancement) to improve accuracy on difficult text, such as logos
 - Draws bounding boxes around the detected text on the original image
-- ![Optical Character Recognition (OCR) - without Text](vision_ai_demo6.png)
-- ![Optical Character Recognition (OCR) - with Text](vision_ai_demo7.png)
+- ![Optical Character Recognition (OCR) - without Text](images/vision_ai_demo6.png)
+- ![Optical Character Recognition (OCR) - with Text](images/vision_ai_demo7.png)
 
 ## How to Run the Application
 
